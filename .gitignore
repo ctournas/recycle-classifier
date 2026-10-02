@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.egg-info/
+.env
+*.log
+.vscode/browse.vc.db*
+Project.md
