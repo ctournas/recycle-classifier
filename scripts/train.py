@@ -55,7 +55,9 @@ def load_sagemaker_hyperparameters():
 
 def get_feedback_batch_uri():
     hyperparameters = load_sagemaker_hyperparameters()
-    return os.environ.get("LOW_CONFIDENCE_S3_URI") or hyperparameters.get("low_confidence_s3_uri", LOW_CONFIDENCE_S3_URI)
+    uri = os.environ.get("LOW_CONFIDENCE_S3_URI") or hyperparameters.get("low_confidence_s3_uri", LOW_CONFIDENCE_S3_URI)
+    # SageMaker wraps empty string hyperparameters in quotes e.g. '""'
+    return uri.strip('"').strip("'")
 
 
 def load_base_dataset():
